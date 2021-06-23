@@ -2,28 +2,57 @@
   text-align: center;
 }
 
+* {
+  box-sizing: border-box;
+}
+
 .wrapper {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 10px;
+  grid-template-columns: repeat(3, 350px);
+  justify-content: center;
+  align-items: center;
+  justify-items: center;
+}
+
+/* Making sure the last item is displayed in center */
+
+.product:last-child:nth-child(3n - 2) {
+  grid-column-end: -2;
 }
 
 .memoryButton {
   height: 50px;
   width: 20%;
   margin-right: 20px;
-  margin-top: 20px;
+  margin-top: 10px;
   border-radius: 15px;
+}
+
+.buyButton {
+  color: white;
+  margin-top: 10px;
+  background: radial-gradient(#0ba9c5, #225ab8);
+  font-size: 20px;
+  padding: 10px 60px;
+  border-radius: 5px;
+
+  cursor: pointer;
+}
+
+.buyButton:hover {
+  background: rgba(97, 218, 251, 0.2);
+  color: black;
 }
 
 .memoryButton:hover {
   background-color: rgba(97, 218, 251, 0.4);
+  cursor: pointer;
 }
 
 @media (max-width: 1247px) {
   .wrapper {
     display: grid;
-    grid-template-columns: repeat(2, 1fr);
+    grid-template-columns: repeat(2, 350px);
     gap: 10px;
   }
 }
@@ -31,7 +60,8 @@
 @media (max-width: 831px) {
   .wrapper {
     display: grid;
-    grid-template-columns: repeat(1, 1fr);
+    justify-content: center;
+    grid-template-columns: repeat(1, minmax(51px, 350px));
     gap: 10px;
   }
 }

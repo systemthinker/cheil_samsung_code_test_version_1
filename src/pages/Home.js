@@ -15,18 +15,18 @@ export default function Home() {
   }, [dispatch]);
 
   return (
-    <div className="App">
-      <h1>Home</h1>
-      <div className="wrapper">
-        {products.map((product, index) => {
-          return (
-            <div key = {product.familyRecord}>
-              <ProductCard {...product} id = {index} />
-            </div>
-          );
-        })}
+    <div>
+      <div>
+        <div className="wrapper">
+          {products.map((product, index) => {
+            return (
+              <div className="product" key={product.familyRecord}>
+                <ProductCard {...product} id={index} />
+              </div>
+            );
+          })}
+        </div>
       </div>
-      ;
     </div>
   );
 }

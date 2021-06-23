@@ -18,6 +18,7 @@ export default function ColorChoice({ backGroundColor }) {
     visibility: "visible",
     border: "2px solid white",
     marginRight: "20px",
+    cursor: 'pointer',
   };
   return <div style={style}></div>;
 }

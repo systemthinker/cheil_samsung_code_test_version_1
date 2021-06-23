@@ -2,7 +2,7 @@ import React from "react";
 import ColorChoice from "./ColorChoice";
 import MemoryChoice from "./MemoryChoice";
 import StarRating from "./StarRating";
-import ImageNotAvailable from '../assets/ImageNotAvailable.png'
+import ImageNotAvailable from "../assets/ImageNotAvailable.png";
 import { ratingTextFull, ratingTextEmpty } from "../config/constants";
 import { FaGift } from "react-icons/fa";
 
@@ -14,7 +14,7 @@ export default function ProductCard({
 }) {
   const thumbUrl = modelList[0].thumbUrl || ImageNotAvailable;
   const thumbUrlAlt = modelList[0].thumbUrlAlt || ImageNotAvailable;
-  const titleName = fmyMarketingName || 'nvt';
+  const titleName = fmyMarketingName || "nvt";
   const colorChoiceArray = chipOptions[0].optionList || [];
   const memoryChoiceArray = chipOptions[1].optionList || [];
   const ratingNumber = modelList[0].ratings || 0;
@@ -23,9 +23,9 @@ export default function ProductCard({
   const ratingFull = ratingTextFull;
   const ratingEmpty = ratingTextEmpty;
 
-  const reviewCount = modelList[0].reviewCount || 'nvt';
-  const price = modelList[0].price || 'nvt';
-  const storePromotion = modelList[0].storePromotions[0].promotionText || 'nvt'
+  const reviewCount = modelList[0].reviewCount || "nvt";
+  const price = modelList[0].price || "nvt";
+  const storePromotion = modelList[0].storePromotions[0].promotionText || "nvt";
 
   const ratingArray = [];
 
@@ -39,11 +39,10 @@ export default function ProductCard({
 
   starRating();
   return (
-    <div>
-      <h3 style={{marginTop : '60px'}}>{titleName}</h3>
+    <div className="productOne">
+      <h3 style={{ marginTop: "40px" }}>{titleName}</h3>
       <img src={thumbUrl} alt={thumbUrlAlt} />
-      
-      
+
       <div>
         {colorChoiceArray.map((colorChoice, index) => {
           return (
@@ -80,7 +79,10 @@ export default function ProductCard({
       </div>
       <div>
         <FaGift />
-        <span>{' '}{storePromotion}</span>
+        <span> {storePromotion}</span>
+      </div>
+      <div>
+        <button className="buyButton"> Koop nu</button>
       </div>
     </div>
   );
