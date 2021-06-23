@@ -8,16 +8,59 @@
 
 .wrapper {
   display: grid;
-  grid-template-columns: repeat(3, 350px);
+  grid-template-columns: repeat(3, 380px);
   justify-content: center;
   align-items: center;
   justify-items: center;
+  text-align: center;
 }
 
 /* Making sure the last item is displayed in center */
+@media (min-width: 1247px) {
+  .product:last-child:nth-child(3n - 2) {
+    grid-column-end: -2;
+  }
+}
 
-.product:last-child:nth-child(3n - 2) {
-  grid-column-end: -2;
+.underlineDiv {
+  height: 5px;
+  position: relative;
+  z-index: 1;
+  background: #eee;
+}
+.underlineDiv:before {
+  content: "";
+  position: absolute;
+  left: 25%;
+  bottom: 0;
+  height: 1px;
+  width: 50%; /* or 100px */
+  border-bottom: 1px solid rgba(0, 0, 0, 0.2);
+}
+
+.promotionDiv {
+  margin: auto;
+  max-width: 80%;
+  margin-top: 5px;
+}
+
+.promotionSpan {
+  max-width: 50%;
+  text-align: center;
+}
+
+.product {
+  margin-top: 5px;
+}
+
+h2 {
+  margin-top: 5px;
+  margin-bottom: 5px;
+}
+
+.image {
+  max-width: 250px;
+  max-height: 250px;
 }
 
 .memoryButton {
@@ -66,7 +109,7 @@
   }
 }
 
-.App-header {
+/* .App-header {
   background-color: #282c34;
   min-height: 100vh;
   display: flex;
@@ -79,4 +122,8 @@
 
 .App-link {
   color: #61dafb;
+} */
+
+.footer {
+  height: 300px;
 }

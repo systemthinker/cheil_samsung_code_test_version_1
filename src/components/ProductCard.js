@@ -25,7 +25,14 @@ export default function ProductCard({
 
   const reviewCount = modelList[0].reviewCount || "nvt";
   const price = modelList[0].price || "nvt";
-  const storePromotion = modelList[0].storePromotions[0].promotionText || "nvt";
+  const storePromotion =
+    modelList[0].storePromotions[0].promotionText
+      .replace(/<p[^>]*>/g, "")
+      .replace(/<\/p>/g, " ")
+      .replace(/&euro;/g, "€") || "nvt";
+  const storePromotionFinal = storePromotion;
+
+  console.log("storePromotion", storePromotionFinal);
 
   const ratingArray = [];
 
@@ -39,9 +46,9 @@ export default function ProductCard({
 
   starRating();
   return (
-    <div className="productOne">
-      <h3 style={{ marginTop: "40px" }}>{titleName}</h3>
-      <img src={thumbUrl} alt={thumbUrlAlt} />
+    <div>
+      <h3 style={{ marginTop: "80px" }}>{titleName}</h3>
+      <img className="image" src={thumbUrl} alt={thumbUrlAlt} />
 
       <div>
         {colorChoiceArray.map((colorChoice, index) => {
@@ -77,9 +84,12 @@ export default function ProductCard({
       <div>
         <h2>€ {price} </h2>
       </div>
-      <div>
+
+      <div className="underlineDiv"></div>
+
+      <div className="promotionDiv">
         <FaGift />
-        <span> {storePromotion}</span>
+        <span className="promotionSpan"> {storePromotion}</span>
       </div>
       <div>
         <button className="buyButton"> Koop nu</button>

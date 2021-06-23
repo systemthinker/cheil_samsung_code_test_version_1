@@ -7,7 +7,7 @@ export default function StarRating({ value }) {
 
   const style = {
     color: `${setColor}`,
-    marginTop: "20px",
+    marginTop: "10px",
     // height: "2em",
   };
 
