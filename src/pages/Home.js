@@ -20,8 +20,8 @@ export default function Home() {
       <div className="wrapper">
         {products.map((product, index) => {
           return (
-            <div>
-              <ProductCard {...product} />
+            <div key = {product.familyRecord}>
+              <ProductCard {...product} id = {index} />
             </div>
           );
         })}
