@@ -1,21 +1,11 @@
-import Axios from "axios";
-import { apiUrl } from "../../config/constants";
+const initialState = [];
 
+export default (state = initialState, action) => {
+  switch (action.type) {
+    case "FETCH_PRODUCTS":
+      return [...action.payload];
 
-export const fetchProductsAction = (products) => ({
-  type: "FETCH_PRODUCTS",
-  payload: products,
-});
-
-
-
-export const fetchProducts = () => {
-  return async (dispatch) => {
-    
-    const response = await Axios.get(`${apiUrl}`);
-
-    console.log(response);
-    // dispatch(fetchProductsAction(response.data));
-    
-  };
+    default:
+      return state;
+  }
 };
