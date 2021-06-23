@@ -9,11 +9,11 @@ export default function Home() {
     const products = useSelector(selectProducts);
 
     console.log('products', products);
-    dispatch(fetchProducts());
+    
     
     useEffect(() => {
-        
-      }, []);
+        dispatch(fetchProducts());
+      }, [dispatch]);
 
     return (
         <div>
