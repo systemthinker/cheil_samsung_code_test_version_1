@@ -1,30 +1,32 @@
-import React, { useEffect } from 'react'
+import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { selectProducts } from "../store/products/selectors";
-import { fetchProducts } from '../store/products/actions';
-
+import { fetchProducts } from "../store/products/actions";
+import ProductCard from "../components/ProductCard";
 
 export default function Home() {
-    const dispatch = useDispatch()
-    const products = useSelector(selectProducts);
+  const dispatch = useDispatch();
+  const products = useSelector(selectProducts);
 
-    console.log('products', products);
-    
-    
-    // useEffect(() => {
-    //     dispatch(fetchProducts());
-    //   }, [dispatch]);
+  console.log("products", products);
 
-    return (
-        <div className="App">
-            <h1>Home</h1>
-            <div className="wrapper">
-            <div>One</div>
-            <div>Two</div>
-            <div>Three</div>
-            <div>Four</div>
-             <div>Five</div>
+  useEffect(() => {
+    dispatch(fetchProducts());
+  }, [dispatch]);
+
+  return (
+    <div className="App">
+      <h1>Home</h1>
+      <div className="wrapper">
+        {products.map((product, index) => {
+          return (
+            <div>
+              <ProductCard {...product} />
             </div>
-        </div>
-    )
+          );
+        })}
+      </div>
+      ;
+    </div>
+  );
 }
