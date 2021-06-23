@@ -11,13 +11,20 @@ export default function Home() {
     console.log('products', products);
     
     
-    useEffect(() => {
-        dispatch(fetchProducts());
-      }, [dispatch]);
+    // useEffect(() => {
+    //     dispatch(fetchProducts());
+    //   }, [dispatch]);
 
     return (
-        <div>
+        <div className="App">
             <h1>Home</h1>
+            <div className="wrapper">
+            <div>One</div>
+            <div>Two</div>
+            <div>Three</div>
+            <div>Four</div>
+             <div>Five</div>
+            </div>
         </div>
     )
 }
