@@ -10,12 +10,13 @@ export const fetchProductsAction = (products) => ({
 
 
 export const fetchProducts = () => {
-  return async (dispatch) => {
     
+  return async (dispatch) => {
+    console.log('fetchproducts was called')
     const response = await Axios.get(`${apiUrl}`);
 
     console.log(response);
-    // dispatch(fetchProductsAction(response.data));
+    dispatch(fetchProductsAction(response));
     
   };
 };
