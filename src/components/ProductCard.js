@@ -1,7 +1,4 @@
-import React from "react";
-import { useDispatch } from "react-redux";
-import { setColor } from "../store/color/actions";
-import { selectColor } from "../store/color/selectors";
+import React, {useState} from "react";
 import ColorChoice from "./ColorChoice";
 import MemoryChoice from "./MemoryChoice";
 import StarRating from "./StarRating";
@@ -17,8 +14,12 @@ export default function ProductCard({
   chipOptions,
   color,
 }) {
-  const dispatch = useDispatch();
-  const thumbUrl = modelList[0].thumbUrl || ImageNotAvailable;
+
+
+  const [thumbUrl, setThumbUrl] = useState(
+    modelList[0].thumbUrl || ImageNotAvailable
+  );
+
   const thumbUrlAlt = modelList[0].thumbUrlAlt || ImageNotAvailable;
   const titleName = fmyMarketingName || " ";
   const colorChoiceArray = chipOptions[0].optionList || [];
@@ -28,10 +29,18 @@ export default function ProductCard({
   const ratingNumberCeil = Number(Math.ceil(ratingNumber));
   const ratingFull = ratingTextFull;
   const ratingEmpty = ratingTextEmpty;
-  const colorSelected = color;
-  console.log("colorSelected", colorSelected);
-  console.log("family id is", id);
+ 
+
+  let modelListArray = modelList;
+
   const productId = id;
+
+  function colorHandler(id, color) {
+    let filtered = modelListArray.filter(
+      (model) => model.fmyChipList[0].fmyChipCode === color
+    );
+    setThumbUrl(filtered[0].thumbUrl);
+  }
 
   const reviewCount = modelList[0].reviewCount || "";
   const price = modelList[0].priceDisplay || 0;
@@ -43,8 +52,6 @@ export default function ProductCard({
       .replace(/&euro;/g, "€") || " ";
 
   const ratingArray = [];
-
-  console.log("color state is", selectColor);
 
   function starRating(ratingNumberCeil) {
     for (let i = 1; i <= 5; i++) {
@@ -67,11 +74,14 @@ export default function ProductCard({
   }
   function onclickHandler(e, productId, optionCode) {
     e.preventDefault();
+    colorHandler(productId, optionCode);
+    console.log("productId", productId, "optionCode", optionCode);
 
-    dispatch(setColor(productId, optionCode));
+    // dispatch(setColor(productId, optionCode));
   }
 
   starRating(ratingNumberCeil);
+
   return (
     <div>
       <div className="gradientBorder">
