@@ -30,7 +30,6 @@ export default function ProductCard({
       .replace(/<p[^>]*>/g, "")
       .replace(/<\/p>/g, " ")
       .replace(/&euro;/g, "€") || " ";
-  
 
   const ratingArray = [];
 
@@ -45,52 +44,54 @@ export default function ProductCard({
   starRating();
   return (
     <div>
-      <h3 style={{ marginTop: "80px" }}>{titleName}</h3>
-      <img className="imageProductCard" src={thumbUrl} alt={thumbUrlAlt} />
+      <div className="gradientBorder">
+        <h3 style={{ marginTop: "30px" }}>{titleName}</h3>
+        <img className="imageProductCard" src={thumbUrl} alt={thumbUrlAlt} />
 
-      <div>
-        {colorChoiceArray.map((colorChoice, index) => {
-          return (
-            <span key={index}>
-              <ColorChoice backGroundColor={colorChoice.optionCode} />
-            </span>
-          );
-        })}
-      </div>
+        <div>
+          {colorChoiceArray.map((colorChoice, index) => {
+            return (
+              <span key={index}>
+                <ColorChoice backGroundColor={colorChoice.optionCode} />
+              </span>
+            );
+          })}
+        </div>
 
-      <div>
-        {memoryChoiceArray.map((memoryOption, index) => {
-          return (
-            <span key={index}>
-              <MemoryChoice textValue={memoryOption.optionCode} />
-            </span>
-          );
-        })}
-      </div>
-      <div>
-        {ratingArray.map((rating, index) => {
-          return (
-            <span key={index}>
-              {" "}
-              <StarRating value={rating} />{" "}
-            </span>
-          );
-        })}{" "}
-        <span>{ratingNumberToFixedTwo}</span>
-        <span>({reviewCount})</span>
-      </div>
-      <div>
-        <h2>€ {price} </h2>
-      </div>
+        <div>
+          {memoryChoiceArray.map((memoryOption, index) => {
+            return (
+              <span key={index}>
+                <MemoryChoice textValue={memoryOption.optionCode} />
+              </span>
+            );
+          })}
+        </div>
+        <div>
+          {ratingArray.map((rating, index) => {
+            return (
+              <span key={index}>
+                {" "}
+                <StarRating value={rating} />{" "}
+              </span>
+            );
+          })}{" "}
+          <span>{ratingNumberToFixedTwo}</span>
+          <span>({reviewCount})</span>
+        </div>
+        <div>
+          <h2>€ {price} </h2>
+        </div>
 
-      <div className="underlineDiv"></div>
+        <div className="underlineDiv"></div>
 
-      <div className="promotionDiv">
-        <FaGift />
-        <span className="promotionSpan"> {storePromotion}</span>
-      </div>
-      <div>
-        <button className="buyButton"> Koop nu</button>
+        <div className="promotionDiv">
+          <FaGift />
+          <span className="promotionSpan"> {storePromotion}</span>
+        </div>
+        <div>
+          <button className="buyButton"> Koop nu</button>
+        </div>
       </div>
     </div>
   );

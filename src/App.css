@@ -22,7 +22,7 @@
   align-items: center;
   justify-items: center;
   text-align: center;
-  max-width: 1000px;
+  max-width: 1140px;
   height: 100px;
   margin-left: auto;
   margin-right: auto;
@@ -86,7 +86,41 @@
   padding-left: 10px;
 }
 
-.backgroundImageText {
+.brandNavbarHomeImage {
+  cursor: pointer;
+}
+
+.gradientBorder:hover {
+  --angle: 0deg;
+  border: 3px solid;
+  border-image-slice: 1;
+  border-image: linear-gradient(
+      var(--angle),
+      hsl(224, 85%, 66%),
+      hsl(269, 85%, 66%),
+      hsl(314, 85%, 66%),
+      hsl(359, 85%, 66%),
+      hsl(44, 85%, 66%),
+      hsl(89, 85%, 66%),
+      hsl(134, 85%, 66%),
+      hsl(179, 85%, 66%)
+    )
+    1;
+
+  border-radius: 15px;
+  animation: moveGradient 20s alternate infinite;
+}
+
+@keyframes moveGradient {
+  50% {
+    --angle: 360deg;
+  }
+}
+
+@property --angle {
+  syntax: "<angle>";
+  initial-value: 0deg;
+  inherits: false;
 }
 
 .backgroundImageDivColumn {
@@ -102,7 +136,7 @@
 .backgroundImageDivHome {
   height: 400px;
   width: 100%;
-  max-width: 1000px;
+  max-width: 1140px;
   margin-left: auto;
   margin-right: auto;
 
@@ -136,7 +170,7 @@
 }
 
 .promotionSpan {
-  max-width: 50%;
+  max-width: 45%;
   text-align: center;
 }
 
@@ -165,6 +199,7 @@ h2 {
 .buyButton {
   color: white;
   margin-top: 10px;
+  margin-bottom: 20px;
   background: radial-gradient(#0ba9c5, #225ab8);
   font-size: 20px;
   padding: 10px 60px;
