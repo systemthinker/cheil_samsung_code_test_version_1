@@ -6,7 +6,7 @@
   box-sizing: border-box;
 }
 
-.wrapper {
+.wrapperProductCards {
   display: grid;
   grid-template-columns: repeat(3, 380px);
   justify-content: center;
@@ -58,7 +58,7 @@ h2 {
   margin-bottom: 5px;
 }
 
-.image {
+.imageProductCard {
   max-width: 250px;
   max-height: 250px;
 }
@@ -93,7 +93,7 @@ h2 {
 }
 
 @media (max-width: 1247px) {
-  .wrapper {
+  .wrapperProductCards {
     display: grid;
     grid-template-columns: repeat(2, 350px);
     gap: 10px;
@@ -101,7 +101,7 @@ h2 {
 }
 
 @media (max-width: 831px) {
-  .wrapper {
+  .wrapperProductCards {
     display: grid;
     justify-content: center;
     grid-template-columns: repeat(1, minmax(51px, 350px));

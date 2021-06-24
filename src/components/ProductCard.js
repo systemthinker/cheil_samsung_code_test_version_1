@@ -14,7 +14,7 @@ export default function ProductCard({
 }) {
   const thumbUrl = modelList[0].thumbUrl || ImageNotAvailable;
   const thumbUrlAlt = modelList[0].thumbUrlAlt || ImageNotAvailable;
-  const titleName = fmyMarketingName || "nvt";
+  const titleName = fmyMarketingName || " ";
   const colorChoiceArray = chipOptions[0].optionList || [];
   const memoryChoiceArray = chipOptions[1].optionList || [];
   const ratingNumber = modelList[0].ratings || 0;
@@ -23,16 +23,14 @@ export default function ProductCard({
   const ratingFull = ratingTextFull;
   const ratingEmpty = ratingTextEmpty;
 
-  const reviewCount = modelList[0].reviewCount || "nvt";
-  const price = modelList[0].price || "nvt";
+  const reviewCount = modelList[0].reviewCount || " ";
+  const price = modelList[0].price || " ";
   const storePromotion =
     modelList[0].storePromotions[0].promotionText
       .replace(/<p[^>]*>/g, "")
       .replace(/<\/p>/g, " ")
-      .replace(/&euro;/g, "€") || "nvt";
-  const storePromotionFinal = storePromotion;
-
-  console.log("storePromotion", storePromotionFinal);
+      .replace(/&euro;/g, "€") || " ";
+  
 
   const ratingArray = [];
 
@@ -48,7 +46,7 @@ export default function ProductCard({
   return (
     <div>
       <h3 style={{ marginTop: "80px" }}>{titleName}</h3>
-      <img className="image" src={thumbUrl} alt={thumbUrlAlt} />
+      <img className="imageProductCard" src={thumbUrl} alt={thumbUrlAlt} />
 
       <div>
         {colorChoiceArray.map((colorChoice, index) => {

@@ -17,7 +17,7 @@ export default function Home() {
   return (
     <div>
       <div>
-        <div className="wrapper">
+        <div className="wrapperProductCards">
           {products.map((product, index) => {
             return (
               <div className="product" key={product.familyRecord}>
