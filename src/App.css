@@ -63,17 +63,15 @@
   width: 200px;
   align-self: center;
   justify-self: right;
-  
 }
 
 .navbarHomeDivRightIcon {
   padding-left: 10px;
-  
 }
 
 .navbarHomeDivRightIcon:hover {
   cursor: pointer;
-  padding-left: 10px
+  padding-left: 10px;
 }
 
 .navbarHomeDiv li:hover {
@@ -83,6 +81,20 @@
   border-radius: 15px;
 }
 
+.navbarHomeDivRightIconHamburger {
+  display: none;
+  padding-left: 10px;
+}
+
+.backgroundImageDivHome {
+  height: 400px;
+  width: 100%;
+  max-width: 1000px;
+  margin-left: auto;
+  margin-right: auto;
+
+  background-repeat: no-repeat, no-repeat;
+}
 .underlineDiv {
   height: 5px;
   position: relative;
@@ -174,6 +186,14 @@ h2 {
     justify-content: center;
     grid-template-columns: repeat(1, minmax(51px, 350px));
     gap: 10px;
+  }
+  .navbarHomeDiv {
+    display: none;
+  }
+
+  .navbarHomeDivRightIconHamburger {
+    display: initial;
+    cursor: pointer;
   }
 }
 

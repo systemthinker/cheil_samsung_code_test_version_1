@@ -4,6 +4,7 @@ import { selectProducts } from "../store/products/selectors";
 import { fetchProducts } from "../store/products/actions";
 import ProductCard from "../components/ProductCard";
 import Navbar from "../components/Navbar";
+import backgroundImage from '../assets/SamsungLanding.webp'
 
 export default function Home() {
   const dispatch = useDispatch();
@@ -20,6 +21,9 @@ export default function Home() {
       <div>
         <div>
           <Navbar />
+        </div>
+        <div className="backgroundImageDivHome" style={{ backgroundImage: `url(${backgroundImage})` }}>
+
         </div>
         <div className="wrapperProductCards">
           {products.map((product, index) => {

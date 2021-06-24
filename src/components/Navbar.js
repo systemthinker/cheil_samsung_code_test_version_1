@@ -1,6 +1,6 @@
 import React from "react";
 import logo from "../assets/logo.jpg";
-import { FaSolid, FaUser, FaShoppingCart } from "react-icons/fa";
+import { FaSolid, FaUser, FaShoppingCart,FaBars } from "react-icons/fa";
 
 export default function Navbar() {
   return (
@@ -22,6 +22,8 @@ export default function Navbar() {
           <span className="navbarHomeDivRightIcon"> <FaUser size={22} /></span>
        
           <span className="navbarHomeDivRightIcon"><FaShoppingCart size={22} /></span>
+
+          <span className="navbarHomeDivRightIconHamburger"><FaBars size={22} /></span>
       </div>
     </div>
   );
