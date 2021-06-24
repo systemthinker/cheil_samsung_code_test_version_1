@@ -5,6 +5,7 @@ import StarRating from "./StarRating";
 import ImageNotAvailable from "../assets/ImageNotAvailable.png";
 import { ratingTextFull, ratingTextEmpty } from "../config/constants";
 import { FaGift } from "react-icons/fa";
+import CrossedPrice from "./CrossedPrice";
 
 export default function ProductCard({
   id,
@@ -23,8 +24,9 @@ export default function ProductCard({
   const ratingFull = ratingTextFull;
   const ratingEmpty = ratingTextEmpty;
 
-  const reviewCount = modelList[0].reviewCount || " ";
-  const price = modelList[0].price || " ";
+  const reviewCount = modelList[0].reviewCount || "";
+  const price = modelList[0].priceDisplay || 0;
+  const promotionPrice = modelList[0].promotionPriceDisplay || price || 0;
   const storePromotion =
     modelList[0].storePromotions[0].promotionText
       .replace(/<p[^>]*>/g, "")
@@ -33,7 +35,9 @@ export default function ProductCard({
 
   const ratingArray = [];
 
-  function starRating() {
+  console.log("promotionPrice", promotionPrice);
+
+  function starRating(ratingNumberCeil) {
     for (let i = 1; i <= 5; i++) {
       ratingNumberCeil >= i
         ? ratingArray.push(ratingFull)
@@ -41,7 +45,19 @@ export default function ProductCard({
     }
   }
 
-  starRating();
+  function checkForPromotionPrice(price, promotionPrice) {
+    try {
+      if (promotionPrice > price) {
+        return <CrossedPrice price={price} />;
+      } else {
+        return;
+      }
+    } catch (err) {
+      console.log("error is", err);
+    }
+  }
+
+  starRating(ratingNumberCeil);
   return (
     <div>
       <div className="gradientBorder">
@@ -80,7 +96,10 @@ export default function ProductCard({
           <span>({reviewCount})</span>
         </div>
         <div>
-          <h2>€ {price} </h2>
+          <p className="promotionPrice">
+            {checkForPromotionPrice(price, promotionPrice)}
+          </p>
+          <h2>€ {promotionPrice} </h2>
         </div>
 
         <div className="underlineDiv"></div>

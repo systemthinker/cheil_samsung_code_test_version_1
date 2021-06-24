@@ -186,8 +186,12 @@ h2 {
 .imageProductCard {
   max-width: 250px;
   max-height: 250px;
+  cursor: pointer;
 }
 
+.promotionPrice {
+  text-decoration: line-through;
+}
 .memoryButton {
   height: 50px;
   width: 20%;
