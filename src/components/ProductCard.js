@@ -1,4 +1,4 @@
-import React, {useState} from "react";
+import React, { useState } from "react";
 import ColorChoice from "./ColorChoice";
 import MemoryChoice from "./MemoryChoice";
 import StarRating from "./StarRating";
@@ -12,13 +12,12 @@ export default function ProductCard({
   modelList,
   fmyMarketingName,
   chipOptions,
-  color,
 }) {
-
-
   const [thumbUrl, setThumbUrl] = useState(
     modelList[0].thumbUrl || ImageNotAvailable
   );
+
+  const [clickedIndex, setClickedIndex] = useState(0);
 
   const thumbUrlAlt = modelList[0].thumbUrlAlt || ImageNotAvailable;
   const titleName = fmyMarketingName || " ";
@@ -26,20 +25,22 @@ export default function ProductCard({
   const memoryChoiceArray = chipOptions[1].optionList || [];
   const ratingNumber = modelList[0].ratings || 0;
   const ratingNumberToFixedTwo = Number(ratingNumber).toFixed(2);
-  const ratingNumberCeil = Number(Math.ceil(ratingNumber));
+  const ratingNumberRound = Number(Math.round(ratingNumber));
   const ratingFull = ratingTextFull;
   const ratingEmpty = ratingTextEmpty;
- 
 
   let modelListArray = modelList;
 
-  const productId = id;
-
-  function colorHandler(id, color) {
+  function colorHandler(color) {
     let filtered = modelListArray.filter(
       (model) => model.fmyChipList[0].fmyChipCode === color
     );
-    setThumbUrl(filtered[0].thumbUrl);
+
+    try {
+      setThumbUrl(filtered[0].thumbUrl);
+    } catch (err) {
+      console.log(err.message);
+    }
   }
 
   const reviewCount = modelList[0].reviewCount || "";
@@ -53,9 +54,9 @@ export default function ProductCard({
 
   const ratingArray = [];
 
-  function starRating(ratingNumberCeil) {
+  function starRating(ratingNumberRound) {
     for (let i = 1; i <= 5; i++) {
-      ratingNumberCeil >= i
+      ratingNumberRound >= i
         ? ratingArray.push(ratingFull)
         : ratingArray.push(ratingEmpty);
     }
@@ -72,15 +73,14 @@ export default function ProductCard({
       console.log("error is", err);
     }
   }
-  function onclickHandler(e, productId, optionCode) {
+  function onclickHandler(e, optionCode, index) {
     e.preventDefault();
-    colorHandler(productId, optionCode);
-    console.log("productId", productId, "optionCode", optionCode);
 
-    // dispatch(setColor(productId, optionCode));
+    colorHandler(optionCode);
+    setClickedIndex(index);
   }
 
-  starRating(ratingNumberCeil);
+  starRating(ratingNumberRound);
 
   return (
     <div>
@@ -93,11 +93,15 @@ export default function ProductCard({
             return (
               <span
                 onClick={(e) =>
-                  onclickHandler(e, productId, colorChoice.optionCode)
+                  onclickHandler(e, colorChoice.optionCode, index)
                 }
                 key={index}
               >
-                <ColorChoice backGroundColor={colorChoice.optionCode} />
+                <ColorChoice
+                  backGroundColor={colorChoice.optionCode}
+                  index={index}
+                  clickedIndex={clickedIndex}
+                />
               </span>
             );
           })}

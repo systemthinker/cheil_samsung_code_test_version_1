@@ -1,7 +1,14 @@
 import React from "react";
 
-export default function ColorChoice({ backGroundColor }) {
+export default function ColorChoice({ backGroundColor, index, clickedIndex }) {
   const color = backGroundColor;
+  const i = index;
+  const clicked = clickedIndex;
+  let border = "2px solid white";
+
+  if (i === clicked) {
+    border = "3px solid black";
+  }
 
   const style = {
     color: "white",
@@ -16,9 +23,10 @@ export default function ColorChoice({ backGroundColor }) {
     content: "",
     display: "inline-block",
     visibility: "visible",
-    border: "2px solid white",
+    border: `${border}`,
+
     marginRight: "20px",
-    cursor: 'pointer',
+    cursor: "pointer",
   };
   return <div style={style}></div>;
 }
