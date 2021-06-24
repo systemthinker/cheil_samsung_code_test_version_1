@@ -4,10 +4,10 @@ export default function ColorChoice({ backGroundColor, index, clickedIndex }) {
   const color = backGroundColor;
   const i = index;
   const clicked = clickedIndex;
-  let border = "2px solid white";
+  let boxshadow = "none";
 
   if (i === clicked) {
-    border = "3px solid black";
+    boxshadow = "0 0 3pt 1pt black";
   }
 
   const style = {
@@ -23,7 +23,8 @@ export default function ColorChoice({ backGroundColor, index, clickedIndex }) {
     content: "",
     display: "inline-block",
     visibility: "visible",
-    border: `${border}`,
+    border: "2px solid white",
+    boxShadow: `${boxshadow}`,
 
     marginRight: "20px",
     cursor: "pointer",
