@@ -4,11 +4,11 @@ export default function ColorChoice({ backGroundColor, index, clickedIndex }) {
   const color = backGroundColor;
   const i = index;
   const clicked = clickedIndex;
-  let boxshadow = "none";
 
-  if (i === clicked) {
-    console.log("checked");
-    boxshadow = "0 0 3pt 1pt black";
+  function boxShadowFunc(i, clicked) {
+    let index = i;
+    let boxShadow = index === clicked ? "0 0 3pt 1pt black" : "none";
+    return boxShadow;
   }
 
   const style = {
@@ -25,7 +25,7 @@ export default function ColorChoice({ backGroundColor, index, clickedIndex }) {
     display: "inline-block",
     visibility: "visible",
     border: "2px solid white",
-    boxShadow: `${boxshadow}`,
+    boxShadow: `${boxShadowFunc(i, clicked)}`,
 
     marginRight: "20px",
     cursor: "pointer",

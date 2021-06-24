@@ -39,6 +39,7 @@
 
 .navbarHomeDiv {
   width: 480px;
+  padding-bottom: 12px;
 }
 .navbarHomeDiv li a {
   display: block;
@@ -52,11 +53,6 @@
   padding: 0;
   overflow: hidden;
   background-color: rgb(255, 255, 255);
-}
-
-.navbarHomeDiv li {
-  float: left;
-  padding-left: 10px;
 }
 
 .navbarHomeDivRight {
@@ -74,11 +70,16 @@
   padding-left: 10px;
 }
 
+.navbarHomeDiv li {
+  float: left;
+  padding: 5px;
+}
+
 .navbarHomeDiv li:hover {
   background-color: rgb(10, 10, 10);
   color: white;
   cursor: pointer;
-  border-radius: 15px;
+  border-radius: 25px;
 }
 
 .navbarHomeDivRightIconHamburger {
@@ -154,6 +155,10 @@
   position: relative;
   z-index: -1;
   background: #eee;
+}
+
+.backgroundImageText {
+  font-weight: normal;
 }
 .underlineDiv:before {
   content: "";

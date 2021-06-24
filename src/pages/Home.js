@@ -10,10 +10,6 @@ import backgroundImage from "../assets/SamsungLanding.webp";
 export default function Home() {
   const dispatch = useDispatch();
   const products = useSelector(selectProducts);
-  
-
-  console.log("products", products);
-  
 
   useEffect(() => {
     dispatch(fetchProducts());
@@ -41,7 +37,7 @@ export default function Home() {
           {products.map((product, index) => {
             return (
               <div className="product" key={product.familyRecord}>
-                <ProductCard {...product} id={index} />
+                <ProductCard {...product} />
               </div>
             );
           })}

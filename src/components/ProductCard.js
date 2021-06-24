@@ -8,7 +8,6 @@ import { FaGift } from "react-icons/fa";
 import CrossedPrice from "./CrossedPrice";
 
 export default function ProductCard({
-  id,
   modelList,
   fmyMarketingName,
   chipOptions,
@@ -75,7 +74,7 @@ export default function ProductCard({
         return;
       }
     } catch (err) {
-      console.log("error is", err);
+      console.log("error is", err.message);
     }
   }
   function onclickHandler(e, optionCode, index) {
@@ -86,7 +85,6 @@ export default function ProductCard({
   }
 
   function onclickHandlerMemoryChoice(e, index) {
-    console.log("memory was clicked");
     e.preventDefault();
     setClickedIndexMemoryChoice(index);
   }

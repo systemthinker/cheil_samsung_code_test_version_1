@@ -1,7 +1,6 @@
 user stories: 
 
-As a customer I want to be able to see a detail page of the product so that I can 
-be informed before purchasing the phone. 
+
 
 As a customer I want to be able to view the website on my desktop, tablet and smartphone so 
 that I have to freedom to view the website at any time and with any device I please.
@@ -19,9 +18,6 @@ As a customer I want to be able to switch the color of the phone and have it dis
 the phone with the other color so that I can pick a phone in my favorite color.
 
 As a customer I want to be able to Add the product to my basket so that I can purchase that item
-
-As a customer I want to be able to switch between buying it for full price or leasing it so that I can 
-have the option to pay monthly.
 
 As a customer I want to be able to select the memory of the phone so that I can get a phone that matches
 my use pattern.
