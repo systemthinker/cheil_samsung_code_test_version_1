@@ -7,6 +7,7 @@ export default function ColorChoice({ backGroundColor, index, clickedIndex }) {
   let boxshadow = "none";
 
   if (i === clicked) {
+    console.log("checked");
     boxshadow = "0 0 3pt 1pt black";
   }
 

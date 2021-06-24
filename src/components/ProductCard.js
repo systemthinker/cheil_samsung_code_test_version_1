@@ -17,8 +17,6 @@ export default function ProductCard({
     modelList[0].thumbUrl || ImageNotAvailable
   );
 
-  const [clickedIndex, setClickedIndex] = useState(0);
-
   const thumbUrlAlt = modelList[0].thumbUrlAlt || ImageNotAvailable;
   const titleName = fmyMarketingName || " ";
   const colorChoiceArray = chipOptions[0].optionList || [];
@@ -30,6 +28,11 @@ export default function ProductCard({
   const ratingEmpty = ratingTextEmpty;
 
   let modelListArray = modelList;
+
+  const [clickedIndexColorChoice, setClickedIndexColorChoice] = useState(0);
+  const [clickedIndexMemoryChoice, setClickedIndexMemoryChoice] = useState(
+    memoryChoiceArray.length - 1
+  );
 
   function colorHandler(color) {
     let filtered = modelListArray.filter(
@@ -46,11 +49,13 @@ export default function ProductCard({
   const reviewCount = modelList[0].reviewCount || "";
   const price = modelList[0].priceDisplay || 0;
   const promotionPrice = modelList[0].promotionPriceDisplay || price || 0;
-  const storePromotion =
-    modelList[0].storePromotions[0].promotionText
-      .replace(/<p[^>]*>/g, "")
-      .replace(/<\/p>/g, " ")
-      .replace(/&euro;/g, "€") || " ";
+
+  let storePromotion = modelList[0].storePromotions[0].promotionText
+    ? modelList[0].storePromotions[0].promotionText
+        .replace(/<p[^>]*>/g, "")
+        .replace(/<\/p>/g, " ")
+        .replace(/&euro;/g, "€")
+    : " ";
 
   const ratingArray = [];
 
@@ -64,7 +69,7 @@ export default function ProductCard({
 
   function checkForPromotionPrice(price, promotionPrice) {
     try {
-      if (promotionPrice > price) {
+      if (promotionPrice < price) {
         return <CrossedPrice price={price} />;
       } else {
         return;
@@ -77,7 +82,13 @@ export default function ProductCard({
     e.preventDefault();
 
     colorHandler(optionCode);
-    setClickedIndex(index);
+    setClickedIndexColorChoice(index);
+  }
+
+  function onclickHandlerMemoryChoice(e, index) {
+    console.log("memory was clicked");
+    e.preventDefault();
+    setClickedIndexMemoryChoice(index);
   }
 
   starRating(ratingNumberRound);
@@ -100,7 +111,7 @@ export default function ProductCard({
                 <ColorChoice
                   backGroundColor={colorChoice.optionCode}
                   index={index}
-                  clickedIndex={clickedIndex}
+                  clickedIndex={clickedIndexColorChoice}
                 />
               </span>
             );
@@ -110,8 +121,15 @@ export default function ProductCard({
         <div>
           {memoryChoiceArray.map((memoryOption, index) => {
             return (
-              <span key={index}>
-                <MemoryChoice textValue={memoryOption.optionCode} />
+              <span
+                key={index}
+                onClick={(e) => onclickHandlerMemoryChoice(e, index)}
+              >
+                <MemoryChoice
+                  textValue={memoryOption.optionCode}
+                  index={index}
+                  clickedIndex={clickedIndexMemoryChoice}
+                />
               </span>
             );
           })}
