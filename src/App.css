@@ -86,12 +86,30 @@
   padding-left: 10px;
 }
 
+.backgroundImageText {
+}
+
+.backgroundImageDivColumn {
+  display: grid;
+  margin-bottom: auto;
+  margin-top: auto;
+
+  width: 30%;
+  min-width: 200px;
+  margin-left: 10%;
+}
+
 .backgroundImageDivHome {
   height: 400px;
   width: 100%;
   max-width: 1000px;
   margin-left: auto;
   margin-right: auto;
+
+  background-size: cover;
+  display: grid;
+
+  text-align: center;
 
   background-repeat: no-repeat, no-repeat;
 }
@@ -107,7 +125,7 @@
   left: 25%;
   bottom: 0;
   height: 1px;
-  width: 50%; /* or 100px */
+  width: 50%;
   border-bottom: 1px solid rgba(0, 0, 0, 0.2);
 }
 
@@ -194,6 +212,9 @@ h2 {
   .navbarHomeDivRightIconHamburger {
     display: initial;
     cursor: pointer;
+  }
+  .backgroundImageDivHome {
+    height: 300px;
   }
 }
 

@@ -4,7 +4,7 @@ import { selectProducts } from "../store/products/selectors";
 import { fetchProducts } from "../store/products/actions";
 import ProductCard from "../components/ProductCard";
 import Navbar from "../components/Navbar";
-import backgroundImage from '../assets/SamsungLanding.webp'
+import backgroundImage from "../assets/SamsungLanding.webp";
 
 export default function Home() {
   const dispatch = useDispatch();
@@ -22,8 +22,17 @@ export default function Home() {
         <div>
           <Navbar />
         </div>
-        <div className="backgroundImageDivHome" style={{ backgroundImage: `url(${backgroundImage})` }}>
-
+        <div
+          className="backgroundImageDivHome"
+          style={{ backgroundImage: `url(${backgroundImage})` }}
+        >
+          <div className="backgroundImageDivColumn">
+            <h1>Galaxy Overzicht</h1>
+            <h2 className="backgroundImageText">
+              {" "}
+              mooie aanbiedingen op smartphones en tablets
+            </h2>
+          </div>
         </div>
         <div className="wrapperProductCards">
           {products.map((product, index) => {
@@ -34,9 +43,7 @@ export default function Home() {
             );
           })}
         </div>
-        <div className="footer">
-
-        </div>
+        <div className="footer"></div>
       </div>
     </div>
   );
