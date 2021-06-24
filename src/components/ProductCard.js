@@ -1,4 +1,7 @@
 import React from "react";
+import { useDispatch } from "react-redux";
+import { setColor } from "../store/color/actions";
+import { selectColor } from "../store/color/selectors";
 import ColorChoice from "./ColorChoice";
 import MemoryChoice from "./MemoryChoice";
 import StarRating from "./StarRating";
@@ -12,7 +15,9 @@ export default function ProductCard({
   modelList,
   fmyMarketingName,
   chipOptions,
+  color,
 }) {
+  const dispatch = useDispatch();
   const thumbUrl = modelList[0].thumbUrl || ImageNotAvailable;
   const thumbUrlAlt = modelList[0].thumbUrlAlt || ImageNotAvailable;
   const titleName = fmyMarketingName || " ";
@@ -23,6 +28,10 @@ export default function ProductCard({
   const ratingNumberCeil = Number(Math.ceil(ratingNumber));
   const ratingFull = ratingTextFull;
   const ratingEmpty = ratingTextEmpty;
+  const colorSelected = color;
+  console.log("colorSelected", colorSelected);
+  console.log("family id is", id);
+  const productId = id;
 
   const reviewCount = modelList[0].reviewCount || "";
   const price = modelList[0].priceDisplay || 0;
@@ -35,7 +44,7 @@ export default function ProductCard({
 
   const ratingArray = [];
 
-  console.log("promotionPrice", promotionPrice);
+  console.log("color state is", selectColor);
 
   function starRating(ratingNumberCeil) {
     for (let i = 1; i <= 5; i++) {
@@ -56,6 +65,11 @@ export default function ProductCard({
       console.log("error is", err);
     }
   }
+  function onclickHandler(e, productId, optionCode) {
+    e.preventDefault();
+
+    dispatch(setColor(productId, optionCode));
+  }
 
   starRating(ratingNumberCeil);
   return (
@@ -67,7 +81,12 @@ export default function ProductCard({
         <div>
           {colorChoiceArray.map((colorChoice, index) => {
             return (
-              <span key={index}>
+              <span
+                onClick={(e) =>
+                  onclickHandler(e, productId, colorChoice.optionCode)
+                }
+                key={index}
+              >
                 <ColorChoice backGroundColor={colorChoice.optionCode} />
               </span>
             );

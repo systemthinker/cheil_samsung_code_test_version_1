@@ -3,9 +3,9 @@ const initialState = [];
 
 export default (state = initialState, action) => {
   switch (action.type) {
-    case "FETCH_PRODUCTS":
-      return [...action.payload];
-    
+    case "SET_COLOR":
+      console.log("set color was called", action.payload);
+      return (state = [action.payload]);
     default:
       return state;
   }
