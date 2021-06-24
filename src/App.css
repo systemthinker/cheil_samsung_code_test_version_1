@@ -15,11 +15,72 @@
   text-align: center;
 }
 
-/* Making sure the last item is displayed in center */
-@media (min-width: 1247px) {
-  .product:last-child:nth-child(3n - 2) {
-    grid-column-end: -2;
-  }
+.wrapperNavbarHome {
+  display: grid;
+  grid-auto-flow: column;
+  justify-content: center;
+  align-items: center;
+  justify-items: center;
+  text-align: center;
+  max-width: 1000px;
+  height: 100px;
+  margin-left: auto;
+  margin-right: auto;
+}
+.brandNavbarHome {
+  width: 200px;
+  align-self: center;
+  justify-self: left;
+}
+
+.brandNavbarHomeImage {
+  height: 50px;
+}
+
+.navbarHomeDiv {
+  width: 480px;
+}
+.navbarHomeDiv li a {
+  display: block;
+  padding: 8px;
+  background-color: #ffffff;
+}
+
+.navbarHomeDiv ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  background-color: rgb(255, 255, 255);
+}
+
+.navbarHomeDiv li {
+  float: left;
+  padding-left: 10px;
+}
+
+.navbarHomeDivRight {
+  width: 200px;
+  align-self: center;
+  justify-self: right;
+  
+}
+
+.navbarHomeDivRightIcon {
+  padding-left: 10px;
+  
+}
+
+.navbarHomeDivRightIcon:hover {
+  cursor: pointer;
+  padding-left: 10px
+}
+
+.navbarHomeDiv li:hover {
+  background-color: rgb(10, 10, 10);
+  color: white;
+  cursor: pointer;
+  border-radius: 15px;
 }
 
 .underlineDiv {
@@ -90,6 +151,13 @@ h2 {
 .memoryButton:hover {
   background-color: rgba(97, 218, 251, 0.4);
   cursor: pointer;
+}
+
+/* Making sure the last item is displayed in center */
+@media (min-width: 1247px) {
+  .product:last-child:nth-child(3n - 2) {
+    grid-column-end: -2;
+  }
 }
 
 @media (max-width: 1247px) {

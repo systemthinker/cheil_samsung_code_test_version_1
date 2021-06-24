@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { selectProducts } from "../store/products/selectors";
 import { fetchProducts } from "../store/products/actions";
 import ProductCard from "../components/ProductCard";
+import Navbar from "../components/Navbar";
 
 export default function Home() {
   const dispatch = useDispatch();
@@ -17,6 +18,9 @@ export default function Home() {
   return (
     <div>
       <div>
+        <div>
+          <Navbar />
+        </div>
         <div className="wrapperProductCards">
           {products.map((product, index) => {
             return (
