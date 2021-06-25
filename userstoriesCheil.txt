@@ -17,8 +17,6 @@ As a customer I want to be able to switch between models so that I can pick my f
 As a customer I want to be able to switch the color of the phone and have it display an image of 
 the phone with the other color so that I can pick a phone in my favorite color.
 
-As a customer I want to be able to Add the product to my basket so that I can purchase that item
-
 As a customer I want to be able to select the memory of the phone so that I can get a phone that matches
 my use pattern.
 
