@@ -219,6 +219,16 @@ h2 {
   cursor: pointer;
 }
 
+.soldOutButton {
+  margin-top: 10px;
+  margin-bottom: 20px;
+  font-size: 20px;
+  padding: 10px 60px;
+  border-radius: 5px;
+  color: darkgrey;
+  background-color: lightgrey;
+}
+
 .buyButton:hover {
   background: rgba(97, 218, 251, 0.2);
   color: black;

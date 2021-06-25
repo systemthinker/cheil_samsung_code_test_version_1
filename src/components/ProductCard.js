@@ -15,16 +15,22 @@ export default function ProductCard({
   const [thumbUrl, setThumbUrl] = useState(
     modelList[0].thumbUrl || ImageNotAvailable
   );
+  const [modelListNumber, setModelListNumber] = useState(0);
 
-  const thumbUrlAlt = modelList[0].thumbUrlAlt || ImageNotAvailable;
+  const thumbUrlAlt =
+    modelList[modelListNumber].thumbUrlAlt || ImageNotAvailable;
   const titleName = fmyMarketingName || " ";
   const colorChoiceArray = chipOptions[0].optionList || [];
   const memoryChoiceArray = chipOptions[1].optionList || [];
-  const ratingNumber = modelList[0].ratings || 0;
+  const ratingNumber = modelList[modelListNumber].ratings || 0;
   const ratingNumberToFixedTwo = Number(ratingNumber).toFixed(2);
   const ratingNumberRound = Number(Math.round(ratingNumber));
   const ratingFull = ratingTextFull;
   const ratingEmpty = ratingTextEmpty;
+  let instock =
+    modelList[modelListNumber].stockStatusText === "inStock" ? true : false;
+
+  console.log("instock", instock);
 
   let modelListArray = modelList;
 
@@ -82,6 +88,7 @@ export default function ProductCard({
 
     colorHandler(optionCode);
     setClickedIndexColorChoice(index);
+    setModelListNumber(index);
   }
 
   function onclickHandlerMemoryChoice(e, index) {
@@ -158,7 +165,11 @@ export default function ProductCard({
           <span className="promotionSpan"> {storePromotion}</span>
         </div>
         <div>
-          <button className="buyButton"> Koop nu</button>
+          {instock ? (
+            <button className="buyButton"> Koop nu</button>
+          ) : (
+            <button className="soldOutButton"> uitverkocht</button>
+          )}
         </div>
       </div>
     </div>
