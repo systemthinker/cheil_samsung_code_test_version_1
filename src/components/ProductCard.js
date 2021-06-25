@@ -30,8 +30,6 @@ export default function ProductCard({
   let instock =
     modelList[modelListNumber].stockStatusText === "inStock" ? true : false;
 
-  console.log("instock", instock);
-
   let modelListArray = modelList;
 
   const [clickedIndexColorChoice, setClickedIndexColorChoice] = useState(0);
