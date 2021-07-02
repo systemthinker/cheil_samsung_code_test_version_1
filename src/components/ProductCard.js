@@ -1,11 +1,11 @@
-import React, { useState } from "react";
-import ColorChoice from "./ColorChoice";
-import MemoryChoice from "./MemoryChoice";
-import StarRating from "./StarRating";
-import ImageNotAvailable from "../assets/ImageNotAvailable.png";
-import { ratingTextFull, ratingTextEmpty } from "../config/constants";
-import { FaGift } from "react-icons/fa";
-import CrossedPrice from "./CrossedPrice";
+import React, { useState } from 'react';
+import ColorChoice from './ColorChoice';
+import MemoryChoice from './MemoryChoice';
+import StarRating from './StarRating';
+import ImageNotAvailable from '../assets/ImageNotAvailable.png';
+import { ratingTextFull, ratingTextEmpty } from '../config/constants';
+import { FaGift } from 'react-icons/fa';
+import CrossedPrice from './CrossedPrice';
 
 export default function ProductCard({
   modelList,
@@ -19,7 +19,7 @@ export default function ProductCard({
 
   const thumbUrlAlt =
     modelList[modelListNumber].thumbUrlAlt || ImageNotAvailable;
-  const titleName = fmyMarketingName || " ";
+  const titleName = fmyMarketingName || ' ';
   const colorChoiceArray = chipOptions[0].optionList || [];
   const memoryChoiceArray = chipOptions[1].optionList || [];
   const ratingNumber = modelList[modelListNumber].ratings || 0;
@@ -28,7 +28,7 @@ export default function ProductCard({
   const ratingFull = ratingTextFull;
   const ratingEmpty = ratingTextEmpty;
   let instock =
-    modelList[modelListNumber].stockStatusText === "inStock" ? true : false;
+    modelList[modelListNumber].stockStatusText === 'inStock' ? true : false;
 
   let modelListArray = modelList;
 
@@ -48,17 +48,25 @@ export default function ProductCard({
       console.log(err.message);
     }
   }
-
-  const reviewCount = modelList[0].reviewCount || "";
+  const modelListDefined = modelList ? modelList : undefined;
+  const reviewCount = modelList[0].reviewCount || '';
   const price = modelList[0].priceDisplay || 0;
-  const promotionPrice = modelList[0].promotionPriceDisplay || price || 0;
+  const promotionPrice =
+    modelListDefined[0].promotionPriceDisplay || price || 0;
 
-  let storePromotion = modelList[0].storePromotions[0].promotionText
-    ? modelList[0].storePromotions[0].promotionText
-        .replace(/<p[^>]*>/g, "")
-        .replace(/<\/p>/g, " ")
-        .replace(/&euro;/g, "€")
-    : " ";
+  let storePromotion = modelListDefined[0].storePromotions
+    ? modelListDefined[0].storePromotions[0].promotionText
+    : undefined;
+
+  console.log('storepromo', storePromotion);
+
+  // .storePromotions[0]?.promotionText;
+
+  // ? modelList[0].storePromotions[0].promotionText
+  //     .replace(/<p[^>]*>/g, '')
+  //     .replace(/<\/p>/g, ' ')
+  //     .replace(/&euro;/g, '€')
+  // : ' ';
 
   const ratingArray = [];
 
@@ -78,7 +86,7 @@ export default function ProductCard({
         return;
       }
     } catch (err) {
-      console.log("error is", err.message);
+      console.log('error is', err.message);
     }
   }
   function onclickHandler(e, optionCode, index) {
@@ -98,8 +106,10 @@ export default function ProductCard({
 
   return (
     <div>
-      <div className="gradientBorder">
-        <h3 style={{ marginTop: "30px" }}>{titleName}</h3>
+      <div
+      // className="gradientBorder"
+      >
+        <h3 style={{ marginTop: '30px' }}>{titleName}</h3>
         <img className="imageProductCard" src={thumbUrl} alt={thumbUrlAlt} />
 
         <div>
@@ -141,11 +151,11 @@ export default function ProductCard({
           {ratingArray.map((rating, index) => {
             return (
               <span key={index}>
-                {" "}
-                <StarRating value={rating} />{" "}
+                {' '}
+                <StarRating value={rating} />{' '}
               </span>
             );
-          })}{" "}
+          })}{' '}
           <span>{ratingNumberToFixedTwo}</span>
           <span>({reviewCount})</span>
         </div>
@@ -159,7 +169,7 @@ export default function ProductCard({
         <div className="underlineDiv"></div>
 
         <div className="promotionDiv">
-          <FaGift />
+          {storePromotion ? <FaGift /> : <div className="emptyDiv"></div>}
           <span className="promotionSpan"> {storePromotion}</span>
         </div>
         <div>

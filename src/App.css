@@ -120,7 +120,7 @@
 }
 
 @property --angle {
-  syntax: "<angle>";
+  syntax: '<angle>';
   initial-value: 0deg;
   inherits: false;
 }
@@ -150,6 +150,10 @@
 
   background-repeat: no-repeat, no-repeat;
 }
+
+.emptyDiv {
+  height: 45px;
+}
 .underlineDiv {
   height: 5px;
   position: relative;
@@ -161,7 +165,7 @@
   font-weight: normal;
 }
 .underlineDiv:before {
-  content: "";
+  content: '';
   position: absolute;
   left: 25%;
   bottom: 0;
@@ -182,6 +186,9 @@
 }
 
 .product {
+  width: 97%;
+  height: 98%;
+
   margin-top: 5px;
 }
 

@@ -1,12 +1,10 @@
-import Axios from "axios";
-import { apiUrl } from "../../config/constants";
+import Axios from 'axios';
+import { apiUrl } from '../../config/constants';
 
 export const fetchProductsAction = (products) => ({
-  type: "FETCH_PRODUCTS",
+  type: 'FETCH_PRODUCTS',
   payload: products,
 });
-
-
 
 export const fetchProducts = () => {
   return async (dispatch) => {
@@ -17,9 +15,7 @@ export const fetchProducts = () => {
         fetchProductsAction(response.data.response.resultData.productList)
       );
     } catch (err) {
-      console.log("error message is", err.message);
+      console.log('error message is', err.message);
     }
   };
 };
-
-

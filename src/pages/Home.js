@@ -1,11 +1,11 @@
-import React, { useEffect } from "react";
-import { useDispatch, useSelector } from "react-redux";
-import { selectProducts } from "../store/products/selectors";
+import React, { useEffect } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import { selectProducts } from '../store/products/selectors';
 
-import { fetchProducts } from "../store/products/actions";
-import ProductCard from "../components/ProductCard";
-import Navbar from "../components/Navbar";
-import backgroundImage from "../assets/SamsungLanding.webp";
+import { fetchProducts } from '../store/products/actions';
+import ProductCard from '../components/ProductCard';
+import Navbar from '../components/Navbar';
+import backgroundImage from '../assets/SamsungLanding.webp';
 
 export default function Home() {
   const dispatch = useDispatch();
@@ -28,15 +28,18 @@ export default function Home() {
           <div className="backgroundImageDivColumn">
             <h1>Galaxy Overzicht</h1>
             <h2 className="backgroundImageText">
-              {" "}
+              {' '}
               mooie aanbiedingen op smartphones en tablets
             </h2>
           </div>
         </div>
-        <div className="wrapperProductCards">
+        <div className="wrapperProductCards ">
           {products.map((product, index) => {
             return (
-              <div className="product" key={product.familyRecord}>
+              <div
+                className="product gradientBorder "
+                key={product.familyRecord}
+              >
                 <ProductCard {...product} />
               </div>
             );
