@@ -60,13 +60,14 @@ export default function ProductCard({
 
   console.log('storepromo', storePromotion);
 
-  // .storePromotions[0]?.promotionText;
+  storePromotion = storePromotion
+    ? storePromotion
+        .replace(/<p[^>]*>/g, '')
+        .replace(/<\/p>/g, ' ')
+        .replace(/&euro;/g, '€')
+    : undefined;
 
   // ? modelList[0].storePromotions[0].promotionText
-  //     .replace(/<p[^>]*>/g, '')
-  //     .replace(/<\/p>/g, ' ')
-  //     .replace(/&euro;/g, '€')
-  // : ' ';
 
   const ratingArray = [];
 
